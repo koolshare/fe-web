@@ -1,0 +1,136 @@
+<style>
+
+    .panel-default {
+        display: none;
+        width: 85%;
+        background-color: #fff;
+        position: absolute;
+        top: 55px;
+        right: 5px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px rgba(146, 142, 142, 0.911);
+        height: 80vh;
+        overflow: auto
+    }
+
+    .panel-heading>button {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+    }
+    /* .panel-body{
+        max-height: 80vh;
+        overflow-y: auto;
+    } */
+
+    .fill-after:after {
+        content: '.';
+        height: 0;
+        display: block;
+        clear: both;
+        visibility: hidden;
+    }
+
+    .m10 {
+        margin: 10px;
+    }
+
+    .detail-button {
+        margin-left: 20px;
+        color: #00aaff;
+        cursor: pointer
+    }
+
+    .file-box {
+        width: 50px;
+        height: 60px;
+        border: 1px solid #000;
+        float: left;
+        padding: 4px;
+        line-height: 25px;
+    }
+
+    .progress-content {
+        width: 60%;
+        float: left;
+        margin: 0 10px;
+    }
+
+    .center-33p {
+        display: inline-block;
+        width: 33%;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .w28p {
+        width: 28%;
+    }
+
+    .left-63p {
+        display: inline-block;
+        width: 63%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .cancel-button {
+        width: 10%;
+        float: left;
+        margin-left: 20px;
+        color: #00aaff;
+        cursor: pointer;
+    }
+
+    .no-task {
+        margin-left: 10px;
+        color: red;
+    }
+
+    .mask {
+        position: fixed;
+        /* background-color: gray; */
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        z-index: 3;
+    }
+</style>
+<div class="panel panel-default" id="sync-history" ng-show="$parent.dropdownIndex==4">
+    <div class="panel-heading history-list" style="display:block;">
+        同步历史
+        <button class="btn btn-default btn-sm" ng-click="$parent.selectHistoryList('history-list','list')">X</button>
+    </div>
+    <div class="panel-body history-list" style="display:block;">
+        <div ng-show="cogradient.requesting">
+            <div ng-include="config.tplPath + '/spinner.html'"></div>
+            <div style="text-align:center;">加载中，请稍后。。。</div>
+        </div>
+        <div class="fill-after m10" ng-repeat="item in $parent.historyTask = cogradient.historyList">
+            <div class="file-box">文件预览</div>
+            <div class="progress-content">
+                <div>
+                    <span class="left-63p" title="{{item.fromPath | formatName}}">{{item.fromPath | formatName}}</span>
+                    <span></span>
+                    <span class="center-33p" style="color:red;" ng-show="item.progress !=100">同步失败</span>
+                    <span class="center-33p" style="color:blue;" ng-hide="item.progress !=100">同步成功</span>
+                </div>
+                <div>
+                    <span class="center-33p" title="{{item.fromRouterName}}">{{item.fromRouterName}}</span>
+                    <span class="center-33p w28p">----&gt;</span>
+                    <span class="center-33p" title="{{item.toRouterName}}">{{item.toRouterName}}</span>
+                </div>
+            </div>
+            <div class="cancel-button" ng-click="reSynchro(item)">
+                <span ng-show="item.progress !=100">重新同步</span>
+                <span ng-hide="item.progress !=100">再次同步</span>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>

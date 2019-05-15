@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>@1xfile_word</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#6DCAF3" offset="0%"></stop>
+            <stop stop-color="#2C9FF0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C" transform="translate(-354.000000, -371.000000)" fill-rule="nonzero">
+            <g id="Group-26-Copy-2" transform="translate(352.000000, 114.000000)">
+                <g id="file_word" transform="translate(0.000000, 257.000000)">
+                    <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                    <polygon id="Path" fill="url(#linearGradient-1)" points="17.4609375 4.359375 17.4609375 0.0703125 2.1796875 0.0703125 2.1796875 24 21.7734375 24 21.7734375 4.359375"></polygon>
+                    <polyline id="Path" fill="#A2CBFC" points="21.7734375 4.359375 17.4609375 4.359375 17.4609375 0.0703125"></polyline>
+                    <polygon id="Path" fill="#FCFCFC" points="11.49375 8.0671875 12.703125 8.0671875 14.23125 13.3945312 15.2578125 8.0671875 16.8070313 8.0671875 15.2578125 15.2771883 13.546875 16.0546875 11.9765625 11.1387532 10.6476563 16.0546875 8.9390625 15.2771883 7.38984375 8.0671875 8.9390625 8.0671875 9.965625 13.3945312"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

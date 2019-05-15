@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>@1xfile_excel</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#84FACB" offset="0%"></stop>
+            <stop stop-color="#3ADE8D" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C" transform="translate(-354.000000, -156.000000)" fill-rule="nonzero">
+            <g id="Group-26-Copy-2" transform="translate(352.000000, 114.000000)">
+                <g id="file_excel" transform="translate(0.000000, 42.000000)">
+                    <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                    <polygon id="Path" fill="url(#linearGradient-1)" points="17.4609375 4.31953125 17.4609375 0.0234375 2.1796875 0.0234375 2.1796875 23.9882812 21.7734375 23.9882812 21.7734375 4.31953125"></polygon>
+                    <polyline id="Path" fill="#A9FFCE" points="21.76875 4.3125 17.45625 4.3125 17.45625 0.01875"></polyline>
+                    <path d="M11.6077855,11.8438967 L13.8582446,8 L15.8472273,8 L12.5391113,13.6543427 L9.98898274,18 L8,18 L11.6077855,11.8438967 Z M11.58722,13.9066901 L11.3933162,13.5839202 L8.08226221,8 L10.071245,8 L12.3187661,11.7910798 L12.5802424,12.2370892 L16,18 L14.0110173,18 L11.58722,13.9066901 L11.58722,13.9066901 Z" id="Shape" fill="#FCFCFC"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

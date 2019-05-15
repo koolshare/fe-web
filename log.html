@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EasyExplore日志查看</title>
+    <link rel="stylesheet" href="bootswatch/paper/bootstrap.min.css" />
+    <link href="css/animations.css" rel="stylesheet">
+    <link href="css/dialogs.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <style>
+        .shadow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: #000;
+            opacity: 0.1;
+        }
+        .spinner-wrapper{
+            z-index: 333;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,0%);
+        }
+    </style>
+</head>
+
+<body>
+    <pre id="log_content"></pre>
+    <div class="shadow" style="display:none">
+    </div>
+    <div class="spinner-wrapper col-xs-12" style="display:none">
+        <svg class="spinner-container" style="width:65px;height:65px" viewBox="0 0 44 44">
+            <circle class="path" cx="22" cy="22" r="20" fill="none" stroke-width="4"></circle>
+        </svg>
+        <div>请求中，请稍候</div>
+    </div>
+    
+</body>
+<script src="jquery/dist/jquery.min.js"></script>
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    function Log(){
+        this.$content = $('#log_content');
+    }
+    Log.prototype.Loading = function () {
+            $('.shadow').toggle();
+            $('.spinner-wrapper').toggle();
+        }
+    Log.prototype.init=function(){
+        var that = this;
+        that.getData();
+        setInterval(function(){
+            that.getData();
+        },5000);
+    }
+    Log.prototype.getData = function(){
+        var that = this;
+        that.Loading();
+        $.ajax({
+            type: 'get',
+            url: '/api/log',
+            success: function (data) {
+                console.log(data);
+                that.Loading();
+                that.$content.html(data);
+                $('html').scrollTop(that.$content[0].scrollHeight);
+            }
+        })
+    }
+    $(function(){
+        new Log().init();
+    });
+</script>
+</html>

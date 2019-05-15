@@ -1,0 +1,130 @@
+<style>
+    .navbar-inverse {
+        background-color: #ffffff;
+    }
+    .middle {
+       transform: translateY(5px)
+    }
+    .logo {width:42px;margin: 0 16px}
+    .dropdown-menu {width: 250px}
+    .icon {width: 50px;height: 50px;}
+    .mt-10px {margin-top: 8px;}
+    .mt-34px {margin-top: 34px;}
+    .my-34px {margin: 34px 0;}
+</style>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 col-md-9 hidden-xs ">
+              <img class="logo pull-left middle" src="static/assets/icon.png">
+                <div ng-show="!config.breadcrumb">
+                    <a class="navbar-brand hidden-xs ng-binding" href="">angular-{{"filemanager" | translate}}</a>
+                </div>
+                <div ng-include="config.tplPath + '/current-folder-breadcrumb.html'" ng-show="config.breadcrumb">
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3">
+                <div class="navbar-collapse">
+                    <div class="navbar-form navbar-right text-right">
+                        <div class="pull-left visible-xs" ng-if="fileNavigator.currentPath.length">
+                            <button class="btn btn-primary btn-flat" ng-click="fileNavigator.upDir()">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                            </button>
+                            {{fileNavigator.getCurrentFolderName() | strLimit : 12}}
+                        </div>
+                        <div class="btn-group" title="搜索">
+                            <button class="btn btn-flat btn-sm dropdown-toggle" type="button" id="dropDownMenuSearch" data-toggle="dropdown" aria-expanded="true">
+                                <i class="glyphicon glyphicon-search mr2"></i>
+                            </button>
+                            <div class="dropdown-menu animated fast fadeIn pull-right" role="menu" aria-labelledby="dropDownMenuLang">
+                                <input type="text" class="form-control" ng-show="config.searchForm" placeholder="{{'search' | translate}}..." ng-model="$parent.query">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-flat btn-sm" ng-click="$parent.setTemplate('main-icons.html')" ng-show="$parent.viewTemplate !=='main-icons.html'" title="{{'icons' | translate}}">
+                            <i class="glyphicon glyphicon-th-large"></i>
+                        </button>
+
+                        <button class="btn btn-flat btn-sm" ng-click="$parent.setTemplate('main-table.html')" ng-show="$parent.viewTemplate !=='main-table.html'" title="{{'list' | translate}}">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                        </button>
+
+                        <div class="btn-group" title="语言选择">
+                            <button class="btn btn-flat btn-sm dropdown-toggle" type="button" id="dropDownMenuLang" data-toggle="dropdown" aria-expanded="true">
+                                <i class="glyphicon glyphicon-globe mr2"></i>
+                            </button>
+
+                            <ul class="dropdown-menu scrollable-menu animated fast fadeIn pull-right" role="menu" aria-labelledby="dropDownMenuLang">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="changeLanguage('en')">English</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="changeLanguage('zh_cn')">简体中文</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="btn-group" title="文件操作">
+                            <button class="btn btn-flat btn-sm dropdown-toggle" type="button" id="more" data-toggle="dropdown" aria-expanded="true">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                            </button>
+
+                            <ul class="dropdown-menu scrollable-menu animated fast fadeIn pull-right " role="menu" aria-labelledby="more">
+                                <div >
+                                  <li class="mt-34px col-sm-6 col-md-6 text-center" role="presentation" ng-show="config.allowedActions.createFolder" ng-click="modal('newfolder') && prepareNewFolder()">
+                                    <svg class="icon" aria-hidden="true">
+                                      <use xlink:href="#iconxxinjianwenjianjia"></use>
+                                    </svg>
+                                    <div class="">
+                                      {{"new_folder" | translate}}
+                                    </div>
+                                  </li>
+                                  <li class="mt-34px col-sm-6 col-md-6 text-center" role="presentation" ng-show="config.allowedActions.upload" ng-click="modal('uploadfile')">
+                                    <svg class="icon" aria-hidden="true">
+                                      <use xlink:href="#iconxshangchuanwenjian"></use>
+                                    </svg>
+                                    <div class="">
+                                      {{"upload_files" | translate}}
+                                    </div>
+                                  </li>
+                                </div>
+                                <div class="">
+                                  <li class="mt-34px col-sm-6 col-md-6 text-center" role="presentation" ng-click="showProgress(3)">
+                                    <svg class="icon" aria-hidden="true">
+                                      <use xlink:href="#iconxtongbuliebiao"></use>
+                                    </svg>
+                                    <div class=" text-center">
+                                      同步状态
+                                    </div>
+                                  </li>
+                                  <li class="mt-34px col-sm-6 col-md-6 text-center" role="presentation" ng-click="showProgress(4)">
+                                    <svg class="icon" aria-hidden="true">
+                                      <use xlink:href="#iconxtongbulishi"></use>
+                                    </svg>
+                                    <div class=" text-center">
+                                      同步历史
+                                    </div>
+                                  </li>
+                                </div>
+                                <div class="">
+                                  <li class="mt-34px col-sm-6 col-md-6 text-center" role="presentation" ng-click="showSysteminfo()">
+                                    <svg class="icon" aria-hidden="true">
+                                      <use xlink:href="#iconxxitongxinxi"></use>
+                                    </svg>
+                                    <div class="">
+                                      系统信息
+                                    </div>
+                                  </li>
+                                  <li class="my-34px col-sm-6 col-md-6 text-center" role="presentation" ng-click="sysReconfig()">
+                                    <svg class="icon" aria-hidden="true">
+                                      <use xlink:href="#iconxxitongpeizhi"></use>
+                                    </svg>
+                                    <div class="">
+                                      系统配置
+                                    </div>
+                                  </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

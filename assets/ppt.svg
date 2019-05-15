@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>@1xfile-ppt</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFA77D" offset="0%"></stop>
+            <stop stop-color="#F96E43" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C" transform="translate(-355.000000, -285.000000)" fill-rule="nonzero">
+            <g id="Group-26-Copy-2" transform="translate(352.000000, 114.000000)">
+                <g id="file-ppt" transform="translate(0.000000, 171.000000)">
+                    <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                    <path d="M18.116129,0.387096773 L5.34193549,0.387096773 C4.25806453,0.387096773 3.40645162,1.23870968 3.4064516,2.32258064 L3.4064516,21.6774194 C3.4064516,22.7612903 4.25806451,23.6129032 5.34193549,23.6129032 L20.4387097,23.6129032 C21.5225806,23.6129032 22.3741935,22.7612903 22.3741935,21.6774194 L22.3741935,4.64516128 L18.116129,0.387096773 Z" id="Shape" fill="url(#linearGradient-1)"></path>
+                    <polygon id="Path" fill="#FFFFFF" opacity="0.99" points="10 8 12 8 12 17 10 17"></polygon>
+                    <path d="M14.7761538,8 L10,8 L10,14 L14.7761538,14 C16.0038462,14 17,12.9909091 17,11.7472727 L17,10.2527273 C17,9.00909091 16.0038462,8 14.7761538,8 Z M15.2769231,11.7472727 C15.2769231,12.0254545 15.0507692,12.2545455 14.7761538,12.2545455 L11.7230769,12.2545455 L11.7230769,9.74545454 L14.7761538,9.74545454 C15.0507692,9.74545454 15.2769231,9.97454545 15.2769231,10.2527273 L15.2769231,11.7472727 L15.2769231,11.7472727 Z" id="Shape" fill="#FFFFFF" opacity="0.99"></path>
+                    <path d="M18.116129,0.387096773 L18.0387097,0.387096773 L18.0387097,3.48387096 C18.0387097,3.87096773 18.2322581,4.72258064 19.3935484,4.72258064 L22.3741935,4.72258064 L18.116129,0.387096773 Z" id="Path" fill="#FFCCA1"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

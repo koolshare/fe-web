@@ -1,0 +1,39 @@
+<div class="iconset noselect">
+    <div class="item-list clearfix" prevent="true">
+        <div class="col-120" ng-repeat="item in $parent.fileList = (fileNavigator.fileList | filter: {model:{name: query}})" ng-show="!fileNavigator.requesting && !fileNavigator.error">
+            <a href="" class="thumbnail text-center main-item" ng-click="selectOrUnselect(item, $event, $index)" ng-dblclick="smartClick(item)" ng-right-click="selectOrUnselect(item, $event, $index)" title="{{item.model.name}} ({{item.model.size | humanReadableFileSize}})" ng-class="{selected: isSelected(item)}">
+                <div class="item-icon">
+                    <i class="glyphicon glyphicon-folder-open" ng-show="item.model.type === 'dir'"></i>
+                    <div ng-show="item.model.type === 'file'" ng-class="{'item-extension': config.showExtensionIcons}">
+                      <div >
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="item.model.name.slice(item.model.name.lastIndexOf('.')+1) === 'xcel'" ng-src="static/assets/excel.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="['docx', 'doc'].includes(item.model.name.slice(item.model.name.lastIndexOf('.')+1))" ng-src="static/assets/word.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="item.model.name.slice(item.model.name.lastIndexOf('.')+1) === 'flv'" ng-src="static/assets/flash.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="['mp4','mp3'].includes(item.model.name.slice(item.model.name.lastIndexOf('.')+1))" ng-src="static/assets/music.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="item.model.name.slice(item.model.name.lastIndexOf('.')+1) === 'pdf'" ng-src="static/assets/pdf.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="item.model.name.slice(item.model.name.lastIndexOf('.')+1) === 'ppt'" ng-src="static/assets/ppt.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="item.model.name.slice(item.model.name.lastIndexOf('.')+1) === 'rar'" ng-src="static/assets/rar.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="['jpeg','png','jpg'].includes(item.model.name.slice(item.model.name.lastIndexOf('.')+1))" ng-src="static/assets/img.svg">
+                        <img data-ext="{{ item.model.name | fileExtension }}" ng-if="!['xcel','doc','docx','flv','ppt','pdf','rar','jpeg','png','jpg','mp4','mp3'].includes(item.model.name.slice(item.model.name.lastIndexOf('.')+1))" ng-src="static/assets/others.svg">
+                        <!-- <i class="glyphicon glyphicon-file" ng-if="!['xcel','docx','flv','ppt','pdf','rar','jpeg','png','jpg','mp4','mp3'].includes(item.model.name.slice(item.model.name.lastIndexOf('.')+1))" data-ext="{{ item.model.name | fileExtension }}" ng-class="{'item-extension': config.showExtensionIcons}"></i> -->
+                      </div>
+                    </div>
+                </div>
+                {{(item.model.key||item.model.name) | strLimit : 11 }}
+            </a>
+        </div>
+    </div>
+
+    <div ng-show="fileNavigator.requesting">
+        <div ng-include="config.tplPath + '/spinner.html'"></div>
+        <div class="text-center">P2P连接中，请等待...<a href="/static/log.html" target="_blank" style="color:red">点击查看日志</a></div>
+    </div>
+
+    <div class="alert alert-warning" ng-show="!fileNavigator.requesting && fileNavigator.fileList.length < 1 && !fileNavigator.error">
+        {{"no_files_in_folder" | translate}}...
+    </div>
+
+    <div class="alert alert-danger" ng-show="!fileNavigator.requesting && fileNavigator.error">
+        {{ fileNavigator.error }}
+    </div>
+</div>
