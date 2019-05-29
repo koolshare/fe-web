@@ -1,0 +1,65 @@
+<style>
+    .panel-default {
+        display: none;
+        width: 360px;
+        background-color: #fff;
+        position: absolute;
+        top: 55px;
+        right: 5px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px rgba(146, 142, 142, 0.911);
+        height: 80vh;
+        overflow: auto
+
+    }
+
+    .fill-after:after {
+        content: '.';
+        height: 0;
+        display: block;
+        clear: both;
+        visibility: hidden;
+    }
+
+    .info{
+        font-size: 12px;
+        /*line-height: 5px;*/
+    }
+
+    .abinfo{
+        font-size: 12px;
+        color: #FF7F24;
+    }
+
+    #dlist ul li{
+        list-style-type:none;
+    }
+</style>
+<div class="panel panel-default" id="systeminfo">
+    <div class="panel-heading" style="display:block">
+        系统信息
+    </div>
+    <div class="panel-body" style="display:block">
+        <div class="fill-after">
+            <p class="info">外网TCP： <span id="wtcp"></span></p>
+            <p class="info">外网UDP： <span id="wudp"></span></p>
+            <p class="info">内网TCP： <span id="ntcp"></span></p>
+            <p class="info">NAT类型： <span id="nattype"></span></p>
+            <p class="info">设备分享： <span id="routerid"></span></p>
+            <p class="info">共享密钥：<a href="#" onclick="$('#shareKey').show();">点击显示</a><br><span style="display: none;" id="shareKey"></span></p>
+            <p class="info">共享路径： <span id="sharePath"></span></p>
+            <p class="info">用户令牌：<a href="#" onclick="$('#userToken').show();">点击显示</a><br><span style="display: none;" id="userToken"></span></p>
+            <p class="info">当前版本： <span id="version"></span></p>
+            <p class="info">最新版本： <span id="newversion"></span></p>
+            <div>
+                <p><b>设备连接状态</b> (<a href="#" onclick="$('#dlist').show();">点击显示</a>)</p>
+                <div id="dlist" style="display: none;">
+                </div>
+            </div>
+            <div id="aboutus">
+                <p><b>贡献列表</b> (<a href="#" onclick="$('.abinfo').show();">点击显示</a>)</p>
+                <p class="abinfo" style="display: none;">1. 服务器端 winkidney<br>2. Web端 JSMonkey, 峰<br>3. 客户端 小宝<br>4. Android TODO<br>5. iOS TODO<br>6. 群辉插件 fw867<br>7. 梅林插件 clang<br>8. 测试与教程 bbis</p>
+            </div>
+        </div>
+    </div>
+</div>

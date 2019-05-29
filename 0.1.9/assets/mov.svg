@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>@1xfile-mov</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#898AFB" offset="0%"></stop>
+            <stop stop-color="#6566F9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C" transform="translate(-354.000000, -199.000000)" fill-rule="nonzero">
+            <g id="Group-26-Copy-2" transform="translate(352.000000, 114.000000)">
+                <g id="file-mov" transform="translate(0.000000, 85.000000)">
+                    <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                    <path d="M17.1870968,0.387096773 L4.41290323,0.387096773 C3.32903227,0.387096773 2.47741936,1.23870968 2.47741936,2.32258064 L2.47741936,21.6774194 C2.47741936,22.7612903 3.32903227,23.6129032 4.41290323,23.6129032 L19.5096774,23.6129032 C20.5935484,23.6129032 21.4451613,22.7612903 21.4451613,21.6774194 L21.4451613,4.64516128 L17.1870968,0.387096773 Z" id="Shape" fill="url(#linearGradient-1)"></path>
+                    <path d="M15.6203125,12.634375 L10.665625,15.9375 C10.14375,16.284375 9.715625,16.05625 9.715625,15.428125 L9.715625,8.571875 C9.715625,7.94375 10.14375,7.7140625 10.665625,8.0640625 L15.6203125,11.36875 C16.1421875,11.7140625 16.1421875,12.2859375 15.6203125,12.634375 L15.6203125,12.634375 L15.6203125,12.634375 Z" id="Path" fill="#FFFFFF"></path>
+                    <path d="M17.2645161,0.348387094 L17.1870968,0.348387094 L17.1870968,3.44516128 C17.1870968,3.83225805 17.3806452,4.68387096 18.5419355,4.68387096 L21.5225806,4.68387096 L17.2645161,0.348387094 Z" id="Path" fill="#C1C1F9"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

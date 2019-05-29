@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>@1xothers copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#BBD8ED" offset="0%"></stop>
+            <stop stop-color="#7A8D9E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="渐变图标" transform="translate(-2.000000, -542.000000)">
+            <g id="others-copy" transform="translate(0.000000, 542.000000)">
+                <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                <path d="M17.42,0.387 L21.677,4.64500001 L21.677,21.677 C21.6821259,22.1918396 21.4799394,22.6871002 21.1159688,23.0512589 C20.7519983,23.4154176 20.2568422,23.6178599 19.742,23.613 L4.64500001,23.613 C4.13015779,23.6178599 3.63500175,23.4154176 3.27103117,23.0512589 C2.90706059,22.6871002 2.70487408,22.1918396 2.71000001,21.677 L2.71000001,2.32300001 C2.71000001,1.27699999 3.6,0.387 4.64500001,0.387 L17.42,0.387 Z M15.231,12 C14.713,10.864 14.713,9.009 12.461,9.009 C10.784,9.009 9.75399998,9.711 9.636,11.491 C8.40199999,11.871 6.88999999,11.491 6.351,13.08 C5.81599999,14.658 6.768,17.058 8.34400001,17.15 L15.231,17.15 C16.986,17.15 18.201,16.906 18.201,14.903 C18.201,12.973 16.991,12.113 15.231,12 L15.231,12 Z" id="Shape" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+                <path d="M17.497,0.348 L17.419,0.348 L17.419,3.44500001 C17.419,3.83200001 17.613,4.68400001 18.774,4.68400001 L21.754,4.68400001 L17.498,0.348 L17.497,0.348 Z" id="Path" fill="#C8D3DC"></path>
+            </g>
+        </g>
+    </g>
+</svg>

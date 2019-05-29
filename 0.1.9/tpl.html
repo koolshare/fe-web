@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EasyExplore配置中心</title>
+    <link rel="stylesheet" href="bootswatch/paper/bootstrap.min.css" />
+    <link href="css/animations.css" rel="stylesheet">
+    <link href="css/dialogs.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <style>
+        .option-box {
+            width: 30%;
+            height: 35vh;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            box-shadow: 1px -1px 10px #999, -1px 1px 10px #999, -1px -1px 10px #999, 1px 1px 10px #999;
+        }
+
+        .shadow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: #000;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="option-box">
+        <p class="text-center">EasyExplorer系统配置</p>
+        <div class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="username" class="col-sm-3 control-label">Token:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="username" placeholder="请输入Token" value="">
+                </div>
+                <div class="col-sm-3">
+                    <button id="btnweixin" type="button" class="btn btn-link" data-toggle="modal">微信</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sharePath" class="col-sm-3 control-label">共享路径:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="sharePath" placeholder="请输入共享路径" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="upload" class="col-sm-3 control-label">共享带宽:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="upload" placeholder="不启用，不懂别设置" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checked id="isRemembered"> 同意协议
+                        </label>
+                        (只限中国大陆使用)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                    <button class="btn btn-primary set">配置</button>
+                    <!-- <button type="reset" class="btn btn-default">重置</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" style="width:370px" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span id="myModalLabel">请使用微信扫码</span>
+          </div>
+          <div class="modal-body">
+              <div id="qrimg" width="330px" height="330px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shadow" style="display:none">
+    </div>
+    <div class="spinner-wrapper col-xs-12" style="display:none">
+        <svg class="spinner-container" style="width:65px;height:65px" viewBox="0 0 44 44">
+            <circle class="path" cx="22" cy="22" r="20" fill="none" stroke-width="4"></circle>
+        </svg>
+        <div>配置中，请稍候 (<a href="/static/log.html" target="_blank">点击查看日志</a>)</div>
+    </div>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="jquery/dist/qrcode.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        var DDNSTO_BASE = "https://service.koolshare.cn";
+        function Config() {
+            this.baseUrl = '';
+            this.deviceList = [];
+            this.$option = $('.option-box');
+        };
+        Config.prototype.Loading = function () {
+            $('.shadow').toggle();
+            $('.spinner-wrapper').toggle();
+        }
+        Config.prototype.set = function () {
+            if(!$('#isRemembered').prop('checked')){
+                alert('未同意协议则无法配置');
+                return;
+            }
+            var self = this;
+            var username = $('#username').val(),
+                sharePath = $('#sharePath').val(),
+                upload = $('#upload').val();
+            if (upload === "") {
+                upload = "0";
+            }
+            var data = {
+                username: username,
+                sharePath: sharePath,
+                upload: parseInt(upload),
+            }
+            self.Loading();
+            $.ajax({
+                type: 'post',
+                url: self.baseUrl + '/api/config',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function (data) {
+                    self.Loading();
+                    if (data.success == 0) {
+                        self.getRouterInfo();
+                    }
+                },
+                error: function (error) {
+                    self.Loading();
+                    console.log(error);
+                }
+            })
+        }
+        Config.prototype.getRouterInfo = function () {
+            var self = this;
+            self.Loading();
+            $.ajax({
+                type: 'get',
+                url: self.baseUrl + '/api/routerInfo',
+                dataType: 'json',
+                success: function (data) {
+                    self.Loading();
+                    if(data.result) {
+                        data = data.result;
+                    }
+                    if (!data.routers) {
+                        var r = confirm('获取路信息失败请重试');
+                        if (r == true) {
+                            self.getRouterInfo();
+                        } else {
+                            alert('取消重试')
+                        }
+                    } else {
+                        var array = data.routers;
+                        for (var i = 0, len = array.length; i < len; i++) {
+                            var o = {};
+                            o.routerId = array[i].routerId;
+                            o.name = array[i].name;
+                            if (data.routerId == array[i].routerId) {
+                                o.isCurrentDevice = true;
+                            } else {
+                                o.isCurrentDevice = false;
+                            }
+                            self.deviceList.push(o);
+                        }
+                        localStorage.setItem('deviceList', JSON.stringify(self.deviceList));
+                        window.location.href = '/'
+                    }
+                },
+                error: function (error) {
+                    self.Loading();
+                    console.log(error);
+                }
+            })
+        }
+        Config.prototype.initEvent = function () {
+            var self = this;
+            $('.option-box').on('click', '.set', function () {
+                self.set();
+            });
+        }
+        Config.prototype.init =function(){
+            this.initEvent();
+            this.getDefaultConfig();
+        }
+        Config.prototype.getDefaultConfig = function() {
+             $.getJSON("/api/config", function (data) {
+                $('#username').val(data.username);
+                $('#sharePath').val(data.sharePath);
+            });
+        }
+
+        //TODO $('#myModal').modal('hide');
+        var qrcode;
+        $(document).ready(function () {
+            qrcode = new QRCode(document.getElementById("qrimg"), {
+                width : 330,
+                height : 330
+            });
+
+            $("#btnweixin").click(function () {
+                var listen_id;
+                var since_time;
+                var listen_qr = function () {
+                    if(!since_time || !listen_id) {
+                        return;
+                    }
+                    var now = (new Date(Date.now())).getTime();
+                    if((now-since_time) > 120*1000) {
+                        if(self.qrlink != "") {
+                            $("#myModal").modal('hide');
+                        }
+                        return;
+                    }
+                    var timeout = 30;
+                    var optional_since = "&since_time=" + since_time;
+                    var pollUrl = DDNSTO_BASE + "/longpoll/events?timeout=" + timeout + "&category=weixinoauth-" + listen_id + optional_since;
+                    $.ajax({ url: pollUrl, success: function(data) {
+                        if(data.timeout) {
+                            setTimeout(listen_qr, 200);
+                        } else {
+                            var event = data.events[data.events.length-1];
+                            $("#username").val(event.data);
+                            $("#myModal").modal('hide');
+                        }
+                       }, dataType: "json",
+                       error: function (data) {
+                            setTimeout(listen_qr, 2000);
+                       }
+                    });
+                };
+
+                $.ajax({
+                    url: DDNSTO_BASE + '/wechat/oauth/login/sso/',
+                    dataType: 'jsonp',
+                    success: function(data) {
+                        if(data.status === "not_logined") {
+                            $("#myModal").modal('show');
+                            qrcode.makeCode(data.image);
+                            listen_id = data.event_id;
+                            since_time = (new Date(Date.now())).getTime();
+                            listen_qr();
+                        } else {
+                            $("#username").val(data.token);
+                        }
+                    },
+                    error: function() {
+                        console.error("jsonp request failed");
+                    }
+                });
+
+            });
+
+            (new Config()).init();
+        });
+    </script>
+</body>
+
+</html>

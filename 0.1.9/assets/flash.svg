@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>@1xfile_flash</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F47272" offset="0%"></stop>
+            <stop stop-color="#E53E3E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C" transform="translate(-354.000000, -328.000000)" fill-rule="nonzero">
+            <g id="Group-26-Copy-2" transform="translate(352.000000, 114.000000)">
+                <g id="file_flash" transform="translate(0.000000, 214.000000)">
+                    <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                    <polygon id="Path" fill="url(#linearGradient-1)" points="17.53125 4.30078125 17.53125 0 2.25 0 2.25 24 21.84375 24 21.84375 4.30078125"></polygon>
+                    <polyline id="Path" fill="#F26D6D" points="21.84375 4.3125 17.53125 4.3125 17.53125 0"></polyline>
+                    <path d="M11.1304687,11.9273437 C9.984375,15 8.9203125,15.1265625 7.921875,15.1289062 C7.92421875,15.3890625 7.921875,16.9289062 7.921875,16.9289062 L8.06015625,16.9289062 C8.73984375,16.95 11.2757812,16.93125 12.7734375,13.1765625 L15.2109375,13.1765625 L15.2109375,11.38125 L13.5140625,11.38125 C13.5140625,11.38125 14.2382812,9.28828125 16.1460937,9.3515625 L16.1460937,7.55625 C16.1484375,7.55625 12.7734375,7.01484375 11.1304687,11.9273437 L11.1304687,11.9273437 Z" id="Path" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
