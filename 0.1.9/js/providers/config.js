@@ -11,7 +11,7 @@
             renameUrl: 'bridges/php/handler.php',
             copyUrl: 'bridges/php/handler.php',
             moveUrl: 'bridges/php/handler.php',
-            rsyncUrl: 'bridges/php/handler.php',
+            rsyncUrl: 'api/bisync/rsyncCompat',
             removeUrl: 'bridges/php/handler.php',
             editUrl: 'bridges/php/handler.php',
             getContentUrl: 'bridges/php/handler.php',

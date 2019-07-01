@@ -213,7 +213,7 @@
             var self = this;
             var deferred = $q.defer();
             var data = {
-                action: 'rsync',
+                action: 'bisync',
                 items: items,
                 newPath: path
             };
